@@ -1,0 +1,1 @@
+{"name":"Local: solution","url":"/Users/carlhu/Documents/GitHub/BUPT-ISTPC/Round-8/装配验证/solution.c","tests":[{"id":1697948881442,"input":"4\n0 1 2\n5 3 2 3 4\n5 1 5\n0 1 5\n4 5 4 2 3 4 5\n4\n2\n3\n3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/carlhu/Documents/GitHub/BUPT-ISTPC/Round-8/装配验证/solution.c","group":"local","local":true}
