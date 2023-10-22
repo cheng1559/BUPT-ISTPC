@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> //
 
 long long solve(long long x, int n) {
     if (n == 1) return x;
