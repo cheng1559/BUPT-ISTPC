@@ -1,0 +1,12 @@
+data0.in:
+  timeLimit: 200
+  subtaskId: 0
+  score: 57
+data1.in:
+  timeLimit: 200
+  subtaskId: 1
+  score: 23
+data2.in:
+  timeLimit: 200
+  subtaskId: 1
+  score: 20
