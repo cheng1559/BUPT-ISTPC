@@ -1,0 +1,23 @@
+test_case 0 5 printf "1 0 1"
+
+test_case 1 5 printf "1 0 0"
+test_case 1 5 printf "77 2 0"
+test_case 1 5 printf "32 93 0"
+
+test_case 2 5 printf "1 0 3"
+test_case 2 5 printf "32 93 3"
+test_case 2 5 printf "23 31 4"
+test_case 2 5 printf "83 23 3"
+
+test_case 3 5 printf "63 43 23"
+test_case 3 5 printf "75 21 13"
+test_case 3 5 printf "29 1 19"
+test_case 3 5 printf "23 43 28"
+test_case 3 5 printf "47 34 30"
+test_case 3 5 printf "45 52 11"
+test_case 3 5 printf "45 43 23"
+test_case 3 5 printf "34 33 11"
+test_case 3 5 printf "80 13 23"
+test_case 3 5 printf "20 38 26"
+test_case 3 5 printf "38 72 14"
+test_case 3 5 printf "73 59 19"
