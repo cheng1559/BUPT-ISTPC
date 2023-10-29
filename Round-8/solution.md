@@ -9,13 +9,14 @@ ebook:
 考点：链表、栈、队列、字符串。
 
 1. 所谓“先进先出（FIFO）”、“先进后出（FILO）”是对于数据结构中的一个特定元素而言，其进入容器和从容器中弹出的顺序。
-“先进先出”是指先进入容器的元素优先被弹出，可以类比排队的过程，越先排队的人就越早排到。这与队列的性质相契合。
-“先进后出”是指先进入容器的元素最后被弹出，可以类比叠放积木的过程，最先放置的积木处于最底部，想要将其取出必须先将其上方所有叠放的积木取出。这与栈的性质相契合。
+   “先进先出”是指先进入容器的元素优先被弹出，可以类比排队的过程，越先排队的人就越早排到。这与队列的性质相契合。
+   “先进后出”是指先进入容器的元素最后被弹出，可以类比叠放积木的过程，最先放置的积木处于最底部，想要将其取出必须先将其上方所有叠放的积木取出。这与栈的性质相契合。
 
 2. 如果需要将单链表中的第$k$个结点删去（假设不需要释放内存），只需要将第$k-1$个结点的后继指针指向第$k+1$个结点（即第$k-1$个结点的后继结点的后继结点）。用代码可以表示为`p->next = p->next->next`。
 
 首先对这段代码简要分析。
-```C
+
+```c
 #include <stdio.h>
 
 int main() {
@@ -40,27 +41,28 @@ int main() {
     return 0;
 }
 ```
-3. 主要对中间for循环遍历$n$个整数的部分进行分析。注意到其中嵌套的while循环始终执行出栈操作，而由于每个元素一定进栈一次，所以也至多出栈一次（也就是说每个元素被出栈后一定不会再进栈），因此while循环执行的次数一定不超过$n$次。整体时间复杂度为$O(n)$。
+
+3. 主要对中间$for$循环遍历$n$个整数的部分进行分析。注意到其中嵌套的$while$循环始终执行出栈操作，而由于每个元素一定进栈一次，所以也至多出栈一次（也就是说每个元素被出栈后一定不会再进栈），因此$while$循环执行的次数一定不超过$n$次。整体时间复杂度为$O(n)$。
 
 4. 模拟程序运行。
-遍历到$3$，此时栈空，跳过while循环，将$3$入栈。
-遍历到$2$，此时栈顶元素$3$大于$2$，将$3$出栈。此时栈空，跳出while循环，将$2$入栈。
-遍历到$1$，此时栈顶元素$2$大于$1$，将$2$出栈。此时栈空，跳出while循环，将$1$入栈。
-遍历到4，此时栈顶元素$2$小于$4$，跳过while循环，将$4$入栈。
-遍历到$8$，此时栈顶元素$4$小于$8$，跳过while循环，将$8$入栈。
-遍历到$7$，此时栈顶元素$8$大于$7$，将$8$出栈。此时栈顶元素$4$小于$7$，跳出while循环，将7入栈。
-遍历到$6$，此时栈顶元素$7$大于$6$，将$7$出栈。此时栈顶元素$4$小于$6$，跳出while循环，将$6$入栈。
-遍历到$2$，此时栈顶元素$6$大于$2$，将$6$出栈。此时栈顶元素$4$仍然大于$2$，将2出栈。此时栈顶元素$1$小于$2$，跳出while循环，将$2$入栈。
-遍历到$9$，此时栈顶元素$2$小于$9$，跳过while循环，将$9$入栈。
-遍历到$5$，此时栈顶元素$9$大于$5$，将$9$出栈。此时栈顶元素$2$小于$5$，跳出while循环，将$5$入栈。
-遍历结束，此时栈中元素从栈顶至栈底依次为$5,2,1$，将其依次出栈并输出，因此输出结果为`5 2 1`。
-更一般化地，我们发现遍历到$a_i$的时候，会将栈顶所有大于$a_i$的元素弹出，然后将$a_i$入栈。因此栈中的元素（从栈底到栈顶）一定以$a_i$结尾且是**单调不减**的，具有这种特性的栈叫做**单调栈**。利用其单调性质，我们可以在线性时间复杂度内解决一些较为复杂的算法问题（如寻找一个序列中每个元素左侧第一个比当前元素大的元素）。
+   遍历到$3$，此时栈空，跳过$while$循环，将$3$入栈。
+   遍历到$2$，此时栈顶元素$3$大于$2$，将$3$出栈。此时栈空，跳出$while$循环，将$2$入栈。
+   遍历到$1$，此时栈顶元素$2$大于$1$，将$2$出栈。此时栈空，跳出$while$循环，将$1$入栈。
+   遍历到4，此时栈顶元素$2$小于$4$，跳过$while$循环，将$4$入栈。
+   遍历到$8$，此时栈顶元素$4$小于$8$，跳过$while$循环，将$8$入栈。
+   遍历到$7$，此时栈顶元素$8$大于$7$，将$8$出栈。此时栈顶元素$4$小于$7$，跳出$while$循环，将7入栈。
+   遍历到$6$，此时栈顶元素$7$大于$6$，将$7$出栈。此时栈顶元素$4$小于$6$，跳出$while$循环，将$6$入栈。
+   遍历到$2$，此时栈顶元素$6$大于$2$，将$6$出栈。此时栈顶元素$4$仍然大于$2$，将2出栈。此时栈顶元素$1$小于$2$，跳出$while$循环，将$2$入栈。
+   遍历到$9$，此时栈顶元素$2$小于$9$，跳过$while$循环，将$9$入栈。
+   遍历到$5$，此时栈顶元素$9$大于$5$，将$9$出栈。此时栈顶元素$2$小于$5$，跳出$while$循环，将$5$入栈。
+   遍历结束，此时栈中元素从栈顶至栈底依次为$5,2,1$，将其依次出栈并输出，因此输出结果为`5 2 1`。
+   更一般化地，我们发现遍历到$a_i$的时候，会将栈顶所有大于$a_i$的元素弹出，然后将$a_i$入栈。因此栈中的元素（从栈底到栈顶）一定以$a_i$结尾且是**单调不减**的，具有这种特性的栈叫做**单调栈**。利用其单调性质，我们可以在线性时间复杂度内解决一些较为复杂的算法问题（如寻找一个序列中每个元素左侧第一个比当前元素大的元素）。
 
 5. 根据字典序的定义比较即可。
-记A、B、C、D四个选项的字符串分别为$S_A, S_B, S_C, S_D$。由于$S_A$为$S_B, S_C, S_D$的前缀，根据定义可知$S_A < S_B, S_A < S_C, S_A < S_D$。
-$S_B$和$S_C, S_D$前五个字符相同，从第六个字符开始出现差异，由于$S_{B6} < S_{C6} = S_{D6}$，根据定义可知$S_B < S_C, S_B < S_D$。
-$S_C和S_D$前六个字符相同，从第七个字符开始出现差异，由于$S_{C7} > S_{D7}$，根据定义可知$S_C > S_D$。
-因此，字典序最大的字符串为$S_C$。
+   记A、B、C、D四个选项的字符串分别为$S_A, S_B, S_C, S_D$。由于$S_A$为$S_B, S_C, S_D$的前缀，根据定义可知$S_A < S_B, S_A < S_C, S_A < S_D$。
+   $S_B$和$S_C, S_D$前五个字符相同，从第六个字符开始出现差异，由于$S_{B6} < S_{C6} = S_{D6}$，根据定义可知$S_B < S_C, S_B < S_D$。
+   $S_C和S_D$前六个字符相同，从第七个字符开始出现差异，由于$S_{C7} > S_{D7}$，根据定义可知$S_C > S_D$。
+   因此，字典序最大的字符串为$S_C$。
 
 # B. 汇编验证
 
@@ -72,44 +74,92 @@ $S_C和S_D$前六个字符相同，从第七个字符开始出现差异，由于
 
 正如题干所说的，你需要维护一个栈，记录虚拟机栈上各个元素的类型，遇到$call$指令时，将元素类型出栈，并与函数的参数列表中的类型逆序匹配，如果匹配成功，则将函数的返回值类型压栈，否则回答`NO`。最后如果声明的返回值类型不是$0$，确认返回时栈上只有一个元素，且类型与返回值类型匹配，否则回答`NO`，如果返回值类型是$0$，则确认栈为空，否则回答`NO`。都检查通过则回答`YES`。
 
-**标准程序**：
+**标准程序（Python）**：
+
 ```python
 class Func:
-	def __init__(self, rval, args):
-		self.rval = rval
-		self.args = list(reversed(args)) # Turn the push-order into pop-order
+    def __init__(self, rval, args):
+        self.rval = rval
+        self.args = list(reversed(args)) # Turn the push-order into pop-order
 
 class Stack:
-	def __init__(self, init):
-		self.items = init
-	
-	def call(self, func):
-		for j in func.args:
-			if len(self.items) == 0 or self.items.pop() != j:
-				return False
-		if func.rval != 0:
-			self.items.append(func.rval)
-		return True
+    def __init__(self, init):
+        self.items = init
+
+    def call(self, func):
+        for j in func.args:
+            if len(self.items) == 0 or self.items.pop() != j:
+                return False
+        if func.rval != 0:
+            self.items.append(func.rval)
+        return True
 
 n = int(input())
 funcs = [None]
 for i in range(n):
-	rval, _, *args = map(int, input().split())
-	funcs.append(Func(rval, args))
+    rval, _, *args = map(int, input().split())
+    funcs.append(Func(rval, args))
 s, r, _, *p = map(int, input().split())
 stack = Stack(p)
 for i in range(s):
-	j = int(input())
-	if not stack.call(funcs[j]):
-		print("NO")
-		exit(0)
+    j = int(input())
+    if not stack.call(funcs[j]):
+        print("NO")
+        exit(0)
 if (r == 0 and len(stack.items) == 0) or (len(stack.items) == 1 and stack.items[0] == r):
-	print("YES")
+    print("YES")
 else:
-	print("NO")
+    print("NO")
+```
+
+**标准程序（C）：**
+
+```c
+#include <stdio.h>
+
+#define MAXN 10005
+int stack[MAXN], top;
+int rett[MAXN], argc[MAXN], argt[MAXN][50];
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; ++i) {
+        scanf("%d %d", &rett[i], &argc[i]);
+        for (int j = 0; j < argc[i]; ++j) {
+            scanf("%d", &argt[i][j]);
+        }
+    }
+    int s, r, c;
+    scanf("%d %d %d", &s, &r, &c);
+    for (int i = 0; i < c; ++i) {
+        int t;
+        scanf("%d", &t);
+        stack[top++] = t;
+    }
+    for (int t = 0; t < s; ++t) {
+        int i;
+        scanf("%d", &i);
+        for (int j = argc[i] - 1; j >= 0; --j) {
+            if (top == 0 || argt[i][j] != stack[top - 1]) {
+                printf("NO\n");
+                return 0;
+            }
+            --top;
+        }
+        if (rett[i]) stack[top++] = rett[i];
+    }
+    if ((r == 0 && top == 0) || (r && top == 1 && stack[top - 1] == r)) {
+        printf("YES\n");
+    } else {
+        printf("NO\n");
+    }
+    return 0;
+}
 ```
 
 **评分标准**：
+
 1. 通过所有样例：$100$分
 
 <div style="page-break-after: always"></div>
@@ -124,45 +174,79 @@ else:
 
 队列本身可以使用$q + 1$个元素的数组实现，使用两个指针分别指向队列的头和尾，每次入队时，将尾指针向后移动一位，出队时，将头指针向后移动一位。当指针指向数组的末尾时，将其置为$0$。队列满时，头指针和尾指针相邻，队列空时，头指针和尾指针相等。每次入队时，如果队是满的，就先出队一个，如题目所说。
 
-**标准程序**：
+**标准程序（Python）：**
+
 ```python
 class Queue:
-	def __init__(self, sz):
-		self.items = [None] * (sz + 1)
-		self.head = 0
-		self.tail = 0
-		self.stat = [1] * 6
-		self.prod = 1
-	
-	def push(self, n):
-		if (self.head + 1) % len(self.items) == self.tail:
-			self._pop() # Maintain fixed size queue
-		self.items[self.head] = n
-		self.head = (self.head + 1) % len(self.items)
-		self.prod = self.prod // self.stat[n] * (self.stat[n] + 1)
-		self.stat[n] += 1
+    def __init__(self, sz):
+        self.items = [None] * (sz + 1)
+        self.head = 0
+        self.tail = 0
+        self.stat = [1] * 6
+        self.prod = 1
 
-	def _pop(self):
-		n = self.items[self.tail]
-		self.prod = self.prod // self.stat[n] * (self.stat[n] - 1)
-		self.stat[n] -= 1
-		self.tail = (self.tail + 1) % len(self.items)
+    def push(self, n):
+        if (self.head + 1) % len(self.items) == self.tail:
+            self._pop() # Maintain fixed size queue
+        self.items[self.head] = n
+        self.head = (self.head + 1) % len(self.items)
+        self.prod = self.prod // self.stat[n] * (self.stat[n] + 1)
+        self.stat[n] += 1
+
+    def _pop(self):
+        n = self.items[self.tail]
+        self.prod = self.prod // self.stat[n] * (self.stat[n] - 1)
+        self.stat[n] -= 1
+        self.tail = (self.tail + 1) % len(self.items)
 
 d = 0
 n, q = map(int, input().split())
 qu = Queue(q)
 for _ in range(n):
-	z = int(input())
-	x = (d + z) % 6
-	qu.push(x)
-	d = qu.prod
-	print(d)
+    z = int(input())
+    x = (d + z) % 6
+    qu.push(x)
+    d = qu.prod
+    print(d)
+```
+
+**标准程序（C）：**
+
+```c
+#include <stdio.h>
+
+int queue[100004], l, r;
+int cnt[6];
+
+int main() {
+    int n, q;
+    long long prev_d = 0;
+    scanf("%d %d", &n, &q);
+    for (int i = 0; i < n; ++i) {
+        int x;
+        scanf("%d", &x);
+        x = (x + prev_d) % 6;
+        queue[r++] = x;
+        ++cnt[x];
+        if (i >= q) {
+            --cnt[queue[l++]];
+        }
+        long long d = 1;
+        for (int i = 0; i < 6; ++i) {
+            d *= cnt[i] + 1;
+        }
+        printf("%lld\n", d);
+        prev_d = d;
+    }
+    return 0;
+}
 ```
 
 **评分标准**：
+
 1. print打印给出的样例输出：$5$分
-~~2. 每次暴力遍历队列：$60$分~~
-3. 通过所有样例：$100$分
+   ~~2. 每次暴力遍历队列：$60$分~~
+2. 通过所有样例：$100$分
 
 <div style="page-break-after: always"></div>
 
@@ -210,45 +294,94 @@ $$
 
 *你也可以直接进行数值积分，但本题没有这个必要。*
 
-**标准程序**：
+**标准程序（Python）：**
+
 ```python
 from math import sin, cos
 
 def legendre(n):
-	ppp, pp, p = [1], [0, 1], None
-	if n == 0:
-		return ppp
-	elif n == 1:
-		return pp
-	for i in range(2, n + 1):
-		p = [0] * (len(pp) + 1)
-		for j in range(len(pp)):
-			p[j + 1] += (2 * i - 1) / i * pp[j]
-		for j  in range(len(ppp)):
-			p[j] -= (i - 1) / i * ppp[j]
-		ppp, pp = pp, p
-	return p
+    ppp, pp, p = [1], [0, 1], None
+    if n == 0:
+        return ppp
+    elif n == 1:
+        return pp
+    for i in range(2, n + 1):
+        p = [0] * (len(pp) + 1)
+        for j in range(len(pp)):
+            p[j + 1] += (2 * i - 1) / i * pp[j]
+        for j  in range(len(ppp)):
+            p[j] -= (i - 1) / i * ppp[j]
+        ppp, pp = pp, p
+    return p
 
 def fit(a, b, order):
-	if a == 0:
-		return cos(b) if order == 1 else 0
-	p = legendre(order)
-	r1, r2 = 0, 0
-	ans = 0
-	for i in range(len(p) - 1, -1, -1):
-		f = r1 + p[i]
-		n = (-1) ** i
-		ans += f * (\
-			1 / a * (sin(a + b) + n * sin(a - b)) + \
-			i / a ** 2 * (cos(a + b) + n * cos(a - b))\
-		)
-		r1, r2 = r2, -f * i * (i - 1) / a ** 2
-	return ans * (2 * order + 1) / 2
+    if a == 0:
+        return cos(b) if order == 1 else 0
+    p = legendre(order)
+    r1, r2 = 0, 0
+    ans = 0
+    for i in range(len(p) - 1, -1, -1):
+        f = r1 + p[i]
+        n = (-1) ** i
+        ans += f * (\
+            1 / a * (sin(a + b) + n * sin(a - b)) + \
+            i / a ** 2 * (cos(a + b) + n * cos(a - b))\
+        )
+        r1, r2 = r2, -f * i * (i - 1) / a ** 2
+    return ans * (2 * order + 1) / 2
 
 print(fit(*map(int, input().split(" "))))
 ```
 
+**标准程序（C）**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+double P[55][55];
+int n, a, b;
+
+double f(double x) {
+    double ans = 0, tx = 1;
+    for (int i = 0; i <= n; ++i) {
+        ans += P[n][i] * tx;
+        tx *= x;
+    }
+    ans *= cos(a * x + b);
+    return ans;
+}
+
+double simpson(double l, double r) {
+    double mid = l + (r - l) / 2;
+    return (r - l) * (f(l) + 4 * f(mid) + f(r)) / 6;
+}
+
+double integral(double l, double r, int n) {
+    double res = 0, h = (r - l) / n;
+    for (int k = 0; k < n; ++k) {
+        res += simpson(l + k * h, l + (k + 1) * h);
+    }
+    return res;
+}
+
+int main() {
+    scanf("%d %d %d", &a, &b, &n);
+    P[0][0] = 1;
+    P[1][1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        for (int j = 0; j <= i; ++j) {
+            if (j) P[i][j] = P[i - 1][j - 1] * (2 * i - 1) / i;
+            P[i][j] -= P[i - 2][j] * (i - 1) / i;
+        }
+    }
+    printf("%lf\n", integral(-1, 1, 5000) * (2 * n + 1) / 2);
+    return 0;
+}
+```
+
 **评分标准**：
+
 1. print打印给出的样例输出：$5$分
 2. 只能求解$n = 0$的情况：$20$分
 3. 只能算出课本上给出的前$5$项勒让德多项式的系数：$40$分
@@ -286,9 +419,9 @@ $$
 
 这个$R(m, x)$函数并不好想，我们把它的对应关系列出来，以试图找到一个解析式。为了方便，我们将被杀死的人前面的人弄到后面去，以打括号标记原来的位置。因为编号是从$0$开始的，所以被杀死的人是$n - 1$号，我们从他的下一位开始标记，即$0$号。我们有：
 
-|$R(m, x)$| ($0$) | ($1$) | ($...$) | $n - 1$ | $n$    | $n + 1$ | $n + 2$ | $...$ | $x - 1$ | $0$ | $1$ | $...$ | $n - 2$ |
-|--| ----- | ----- | ------- | --------- | ------ | ------- | ------- | ----- | --- | --- | --- | ----- | ------- |
-|$m$|       |       |         | killed    | $0$    | $1$     | $2$     | $...$ | $x - n - 1$ | $x - n$ | $x - n + 1$ | $...$ | $x - 2$ |
+| $R(m, x)$ | ($0$) | ($1$) | ($...$) | $n - 1$ | $n$ | $n + 1$ | $n + 2$ | $...$ | $x - 1$     | $0$     | $1$         | $...$ | $n - 2$ |
+| --------- | ----- | ----- | ------- | ------- | --- | ------- | ------- | ----- | ----------- | ------- | ----------- | ----- | ------- |
+| $m$       |       |       |         | killed  | $0$ | $1$     | $2$     | $...$ | $x - n - 1$ | $x - n$ | $x - n + 1$ | $...$ | $x - 2$ |
 
 这里有些不太严谨，因为如果$x \le n$，上述$n$应该是$n \mod x$，但是不影响结果，为了空间写得下，我们这张表中的$n$都是$n \mod x$。
 
@@ -321,12 +454,12 @@ $$
 
 ```python
 def josephus0(x, n):
-	return 0 if x == 1 else (josephus0(x - 1, n) + n) % x
+    return 0 if x == 1 else (josephus0(x - 1, n) + n) % x
 def josephus(x, n):
-	return josephus0(x, n) + 1
+    return josephus0(x, n) + 1
 ```
 
-但是，这里有个问题，它只能通过$x$比较小的测试样例，它的时间复杂度是$O(x)$，而题目给出的数据范围是大$x$、小	$n$，所以我们需要转向对$x$友好而不是对$n$友好的算法。
+但是，这里有个问题，它只能通过$x$比较小的测试样例，它的时间复杂度是$O(x)$，而题目给出的数据范围是大$x$、小    $n$，所以我们需要转向对$x$友好而不是对$n$友好的算法。
 
 注意到，因为$n$特别小，而$x$又特别大，这就导致了99%的模$x$操作都在做无用功。我们可以考虑把这些无用功去掉，把$J_0(x - 1)$展开。假设从$x$到$x + s$这一段都没有有意义的模$x$操作，我们有：
 
@@ -357,6 +490,7 @@ $$
 $$
 s_1 \ge {x - J_0(x) \over n - 1}
 $$
+
 当$n = 1$时，无解，但此时$J_0(x) = x - 1$，这是平凡的，到时候写程序来个特判就行了。下面的讨论都是在$n > 1$的情况下进行的。
 
 上界：
@@ -392,24 +526,53 @@ $$
 
 当然，你可以直接打表找到上述规律，然后再证明规律是正确的，这样的思维强度小很多。
 
-**标准程序**：
+**标准程序（Python）：**
+
 ```python
 def josephus(x, n):
-	if n == 1:
-		return x
-	currx, curry = 1, 0
-	while True:
-		step = (currx - curry + n - 2) // (n - 1)
-		nextx = currx + step
-		nexty = (curry + n * step) % nextx
-		if x < nextx:
-			return curry + n * (x - currx) + 1
-		currx, curry = nextx, nexty
+    if n == 1:
+        return x
+    currx, curry = 1, 0
+    while True:
+        step = (currx - curry + n - 2) // (n - 1)
+        nextx = currx + step
+        nexty = (curry + n * step) % nextx
+        if x < nextx:
+            return curry + n * (x - currx) + 1
+        currx, curry = nextx, nexty
 
 print(josephus(*map(int, input().split(" "))))
 ```
 
+**标准程序（C）：**
+
+```c
+#include <stdio.h>
+
+long long solve(long long x, int n) {
+    if (n == 1) return x;
+    int s = 0;
+    long long i = 1;
+    while (1) {
+        long long k = (i - s + n - 2) / (n - 1);
+        if (x < i + k) return s + n * (x - i) + 1;
+        i += k;
+        s = (s + n * k) % i;
+    }
+    return 0;
+}
+
+int main() {
+    long long x;
+    int n;
+    scanf("%lld %d", &x, &n);
+    printf("%lld\n", solve(x, n));
+    return 0;
+}
+```
+
 **评分标准**：
+
 1. 写对基础步，但是递归步写错：$20$分
 2. 使用数组暴力模拟：$40$分
 3. 使用链表暴力模拟：$60$分
@@ -418,7 +581,7 @@ print(josephus(*map(int, input().split(" "))))
 
 <style>
 th, td {
-	padding: 9px !important;
+    padding: 9px !important;
 }
 </style>
 

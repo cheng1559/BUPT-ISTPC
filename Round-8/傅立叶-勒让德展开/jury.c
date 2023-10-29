@@ -19,13 +19,12 @@ double simpson(double l, double r) {
     return (r - l) * (f(l) + 4 * f(mid) + f(r)) / 6;
 }
 
-double asr(double l, double r, double eps, double value) {
-    double mid = (l + r) / 2;
-    double l_value = simpson(l, mid);
-    double r_value = simpson(mid, r);
-    if (fabs(l_value + r_value - value) <= eps)
-        return l_value + r_value;
-    return asr(l, mid, eps / 2, l_value) + asr(mid, r, eps / 2, r_value);
+double integral(double l, double r, int n) {
+    double res = 0, h = (r - l) / n;
+    for (int k = 0; k < n; ++k) {
+        res += simpson(l + k * h, l + (k + 1) * h);
+    }
+    return res;
 }
 
 int main() {
@@ -38,5 +37,6 @@ int main() {
             P[i][j] -= P[i - 2][j] * (i - 1) / i;
         }
     }
-    printf("%lf\n", asr(-1, 1, 1E-6, simpson(-1, 1)) * (2 * n + 1) / 2);
+    printf("%lf\n", integral(-1, 1, 5000) * (2 * n + 1) / 2);
+    return 0;
 }
