@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<contest url="https://polygon.codeforces.com/c/38526">
+    <names>
+        <name language="chinese" value="程序设计周赛-10"/>
+        <name language="english" value="ISTPC-10"/>
+    </names>
+    <statements>
+        <statement language="chinese" type="application/pdf" url="https://polygon.codeforces.com/c/38526/chinese/statements.pdf"/>
+        <statement language="english" type="application/pdf" url="https://polygon.codeforces.com/c/38526/english/statements.pdf"/>
+    </statements>
+    <problems>
+        <problem index="a" url="https://polygon.codeforces.com/p5OCT0Q/CaveNightingale/r10-path-huaguang"/>
+        <problem index="b" url="https://polygon.codeforces.com/p4VgkFo/CaveNightingale/r10-fontaine-whale"/>
+        <problem index="c" url="https://polygon.codeforces.com/p1DP8LS/CaveNightingale/r10-sacred-sakura-cleansing-ritual"/>
+        <problem index="d" url="https://polygon.codeforces.com/p8TlBin/CaveNightingale/r10-cat-tail"/>
+        <problem index="e" url="https://polygon.codeforces.com/p1w42bJ/CaveNightingale/r10-shortest-path"/>
+    </problems>
+</contest>

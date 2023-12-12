@@ -1,0 +1,23 @@
+一些选手可能不知道如何计算$x^n$（$n$是自然数），这里给出一种算法：
+
+注意到:
+$$
+x^0 = 1\\
+x^n = x^{n \bmod 2} \cdot (x^2)^{\lfloor n / 2 \rfloor}
+$$
+在编程中实际上将递归展开成循环，有算法：
+
+$$
+\begin{aligned}
+& POWER(x, n):\\
+& \hspace{2em}   r = 1\\
+& \hspace{2em}   \boldsymbol{\operatorname{while }}\; n > 0:\\
+& \hspace{4em}       \boldsymbol{\operatorname{if }}\; n \bmod 2 == 1:\\
+& \hspace{6em}           r = r \times x\\
+& \hspace{4em}       x = x \times x\\
+& \hspace{4em}       n = \lfloor n / 2 \rfloor\\
+& \hspace{2em}   \boldsymbol{\operatorname{return }}\; r
+\end{aligned}
+$$
+
+时间复杂度: $O(\lg n)$

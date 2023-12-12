@@ -1,0 +1,14 @@
+During the quest Sacred Sakura Cleansing Ritual, the shrine maiden Hanachirusato takes the Traveler to the bottom of a well.
+
+Here, there are multiple Electro lanterns, with exactly one of them having a magatama count of $1$, which cannot be modified. The magatama count on the other lanterns can be modified to any integer greater than or equal to $2$. Additionally, there is a torii gate with a puzzle pattern on it.
+
+\begin{center}
+  \includegraphics[scale=0.25]{puzzle.jpg} \\
+  \small{Sacred Sakura Cleansing Ritual}
+\end{center}
+
+After modifications are made, the Traveler returns to the prayer seat with a magatama count of $1$ to pray. At this point, all lanterns with a magatama count of $1$ will connect to all lanterns with a magatama count of $2$, all lanterns with a magatama count of $2$ will connect to all lanterns with a magatama count of $3$, and so on, with all lanterns with a magatama count of $n$ connecting to all lanterns with a magatama count of $n + 1$.
+
+After the prayer, the connections between the lanterns must be exactly the same as the pattern on the torii gate. That is, if two lanterns are connected in the pattern, they must be connected after the traveler prays, and vice versa. The pattern on the torii gate does not show magatama counts and guarantees that all lanterns in the pattern are directly or indirectly connected to the lantern with a magatama count of $1$. Notice the connections are undirected.
+
+Since the traveler needs to solve similar puzzles multiple times during this quest, he/she would like you to write a program to help him/her solve the puzzle or indicate that the puzzle is unsolvable.

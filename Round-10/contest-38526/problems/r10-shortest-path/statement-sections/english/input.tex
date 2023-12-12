@@ -1,0 +1,5 @@
+The first line consists of three positive integers, $n$, $m$, and $k$ ($3 \le n \le 2 \cdot 10^5$，$2 \le m + k \le \min\{\dfrac{(n + 1)(n + 2)}{2}, 2 \cdot 10^5\}$), representing the number of vertices in the polygon (\textbf{excluding the starting point and ending point, numbered $3, 4, ..., n + 2$}), the quantity of point pairs reachable without climbing (number of red edges), and the quantity of point pairs reachable exactly once with a climb (number of blue edges).
+
+Following that, there are $m$ lines, each containing three integers, $i$, $j$, and $w$ ($1 \le i < j \le n + 2$, $0 \le w \le 10^4$), indicating that points $i$ and $j$ are reachable without climbing (red edge), with a distance of $w$.
+
+Afterwards, there are $k$ lines, each containing three integers, $i$, $j$, and $w$ ($1 \le i < j \le n + 2$, $0 \le w \le 10^4$), indicating that points $i$ and $j$ are reachable exactly once with a climb (blue edge), with a distance of $w$.

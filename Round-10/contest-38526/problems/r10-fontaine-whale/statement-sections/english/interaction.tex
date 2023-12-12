@@ -1,0 +1,22 @@
+Your program needs to interact with the judge program to complete the task, output content to the judge program using standard output, and read data from the judge program using standard input.
+
+There are two types of content you can output to the judge program:
+
+\begin{itemize}
+\item ? $t$, where $t$ is a finite decimal, indicating the value of $f(t)$ to be queried. ($0 \le t \le 100$) \\
+The judge program will respond with a finite decimal $f(t)$, with an error not exceeding $10^{-12}$. ($0 \le f(t) \le 1000$)
+\item ! $t_0$, where $t_0$ is a finite decimal, indicating the root of $f(t) = k$. ($0 \le t_0 \le 100$) \\
+After sending this message to the judge program, your program should exit immediately, and the judge program will determine whether your answer is correct.
+\end{itemize}
+
+Your answer $t_0$ will be accepted if and only if it meets at least one of the following conditions: ($t^*$ represents the correct answer)
+\begin{itemize}
+\item $|t_0 - t^*| \le 10^{-4}$
+\item ${|t_0 - t^*| \over |t^*|} \le 10^{-4}$
+\item $|f(t_0) - k| \le 10^{-4}$
+\item ${|f(t_0) - k| \over |k|} \le 10^{-4}$
+\end{itemize}
+
+If the interaction format is incorrect or the final answer is not accepted, the verdict will be Wrong Answer.
+
+In addition, your program can interact up to $100$ times at most, otherwise the verdict will be Partial Correct. If the interaction exceeds $100$ times, $20\%$ of the score for that test point will be deducted, and $10\%$ of the score will be deducted for each $10$ additional interaction until no points remain.

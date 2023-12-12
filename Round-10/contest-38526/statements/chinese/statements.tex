@@ -1,0 +1,55 @@
+\documentclass [11pt, a4paper, oneside] {article}
+
+\usepackage {CJKutf8}
+\usepackage [T2A] {fontenc}
+\usepackage [utf8] {inputenc}
+\usepackage [english, russian] {babel}
+\usepackage {amsmath}
+\usepackage {amssymb}
+\usepackage {olymp}
+\usepackage {comment}
+\usepackage {epigraph}
+\usepackage {expdlist}
+\usepackage {graphicx}
+\usepackage {multirow}
+\usepackage {siunitx}
+\usepackage {ulem}
+%\usepackage {hyperref}
+\usepackage {import}
+\usepackage {ifpdf}
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\begin {document}
+\begin {CJK}{UTF8}{gbsn}
+
+\contest
+{程序设计周赛-10}%
+{}%
+{}%
+
+\binoppenalty=10000
+\relpenalty=10000
+
+\renewcommand{\t}{\texttt}
+
+
+\graphicspath{{../../problems/r10-path-huaguang/statements/chinese/}}
+  \def\ProblemIndex{A}
+\import{../../problems/r10-path-huaguang/statements/chinese/}{./problem.tex}
+\graphicspath{{../../problems/r10-fontaine-whale/statements/chinese/}}
+  \def\ProblemIndex{B}
+\import{../../problems/r10-fontaine-whale/statements/chinese/}{./problem.tex}
+\graphicspath{{../../problems/r10-sacred-sakura-cleansing-ritual/statements/chinese/}}
+  \def\ProblemIndex{C}
+\import{../../problems/r10-sacred-sakura-cleansing-ritual/statements/chinese/}{./problem.tex}
+\graphicspath{{../../problems/r10-cat-tail/statements/chinese/}}
+  \def\ProblemIndex{D}
+\import{../../problems/r10-cat-tail/statements/chinese/}{./problem.tex}
+\graphicspath{{../../problems/r10-shortest-path/statements/chinese/}}
+  \def\ProblemIndex{E}
+\import{../../problems/r10-shortest-path/statements/chinese/}{./problem.tex}
+
+\end {CJK}
+\end {document}

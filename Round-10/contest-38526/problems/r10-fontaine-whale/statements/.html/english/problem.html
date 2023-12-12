@@ -1,0 +1,32 @@
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META content="no-cache" http-equiv="pragma">
+    <META content="-1" http-equiv="expires">
+    <META content="text/html;charset=UTF-8" http-equiv="content-type">
+    <LINK href="problem-statement.css" rel="stylesheet" type="text/css">
+    <TITLE>Prophecy of Fontaine</TITLE>
+    <SCRIPT type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$$$','$$$']], displayMath: [['$$$$$$','$$$$$$']]}
+        });
+        </SCRIPT>
+        <SCRIPT async="" src="https://polygon.codeforces.com/lib/MathJax/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+    </SCRIPT>
+</HEAD><BODY>
+    <DIV class="problem-statement"><DIV class="header"><DIV class="title">Prophecy of Fontaine</DIV><DIV class="time-limit"><DIV class="property-title">time limit per test</DIV>1 second</DIV><DIV class="memory-limit"><DIV class="property-title">memory limit per test</DIV>256 megabytes</DIV><DIV class="input-file"><DIV class="property-title">input</DIV>standard input</DIV><DIV class="output-file"><DIV class="property-title">output</DIV>standard output</DIV></DIV><DIV class="legend"><P></P><P><SPAN class="tex-font-style-bf">This problem is interactive. If you are not familiar with this type of problem, you can first check the guide. In general, you must flush the buffer of the standard output each time you interact before you can read the answer from the standard input of the judge program.<A href="https://codeforces.com/blog/entry/45307">https://codeforces.com/blog/entry/45307</A></SPAN></P><P>Fontaine has a prophecy that reads roughly as follows: the water levels in Fontaine will rise, and all the people with sin will be drowned and dissolved, with only the Hydro Archon, Furina, remaining, weeping on her throne.</P><P>Now we know that all of this is due to a huge narwhal in Primordial Sea, All-Devouring Narwhal. When it is big enough, it will cause the Primordial Sea water to leak.</P><P></P><CENTER> <IMG class="tex-graphics" src="d102023a2810f8cc8de6a155e72c91021240d2d4.png">   <SPAN class="tex-font-size-small">All-Devouring Narwhal</SPAN> </CENTER><P></P><P>Focalors has mastered the function $$$f(t)$$$ of the All-Devouring Narwhal's size changing with time, and the minimum size $$$k$$$ that causes the water of Primordial Sea water to leak.</P><P>Now it is known that $$$f(t)$$$ is a strictly increasing and differentiable function, and the function value at some point in $$$(0, 100)$$$ is equal to $$$k$$$. However, Focalors does not master the closed form of the function. She can only calculate $$$f(t)$$$ based on a certain $$$t$$$, and cannot derive or do other operations.</P></DIV><P></P><P></P><DIV class="input-specification"><DIV class="section-title">Input</DIV><P></P><P><SPAN class="tex-font-style-bf">The judge program for this problem does not support scientific notation.</SPAN></P><P>A finite decimal $$$k$$$ represents the minimum body size that causes the Primordial Sea to leak. ($$$1 \le k \le 100$$$)</P></DIV><P></P><P></P><DIV class="interaction"><DIV class="section-title">Interaction</DIV><P></P><P>Your program needs to interact with the judge program to complete the task, output content to the judge program using standard output, and read data from the judge program using standard input.</P><P>There are two types of content you can output to the judge program:</P><P></P><UL> <LI> ? $$$t$$$, where $$$t$$$ is a finite decimal, indicating the value of $$$f(t)$$$ to be queried. ($$$0 \le t \le 100$$$)   The judge program will respond with a finite decimal $$$f(t)$$$, with an error not exceeding $$$10^{-12}$$$. ($$$0 \le f(t) \le 1000$$$) </LI><LI> ! $$$t_0$$$, where $$$t_0$$$ is a finite decimal, indicating the root of $$$f(t) = k$$$. ($$$0 \le t_0 \le 100$$$)   After sending this message to the judge program, your program should exit immediately, and the judge program will determine whether your answer is correct. </LI></UL><P></P><P>Your answer $$$t_0$$$ will be accepted if and only if it meets at least one of the following conditions: ($$$t^*$$$ represents the correct answer) </P><UL> <LI> $$$|t_0 - t^*| \le 10^{-4}$$$ </LI><LI> $$${|t_0 - t^*| \over |t^*|} \le 10^{-4}$$$ </LI><LI> $$$|f(t_0) - k| \le 10^{-4}$$$ </LI><LI> $$${|f(t_0) - k| \over |k|} \le 10^{-4}$$$ </LI></UL><P></P><P>If the interaction format is incorrect or the final answer is not accepted, the verdict will be Wrong Answer.</P><P>In addition, your program can interact up to $$$100$$$ times at most, otherwise the verdict will be Partial Correct. If the interaction exceeds $$$100$$$ times, $$$20\%$$$ of the score for that test point will be deducted, and $$$10\%$$$ of the score will be deducted for each $$$10$$$ additional interaction until no points remain.</P></DIV><P></P><P></P><DIV class="sample-tests"><DIV class="section-title">Example</DIV><P></P><P></P><DIV class="sample-test"><DIV class="input"><DIV class="title">Input</DIV><PRE class="content">
+50
+
+50.41
+
+50.055625
+
+50.0000309449</PRE></DIV><DIV class="output"><DIV class="title">Output</DIV><PRE class="content">
+
+? 71
+
+? 70.75
+
+? 70.7107
+
+! 70.7107</PRE></DIV></DIV></DIV></DIV><P></P><P>  </P>
+
+</BODY></HTML>

@@ -1,0 +1,23 @@
+Some participants may not know how to calculate $x^n$ ($n$ being a natural number). Here is an algorithm:
+
+Note that:
+$$
+x^0 = 1\\
+x^n = x^{n \bmod 2} \cdot (x^2)^{\lfloor n / 2 \rfloor}
+$$
+In programming, the recursion can actually be unfolded into a loop with the following algorithm:
+$$
+\begin{aligned}
+& POWER(x, n):\\
+& \hspace{2em}   r = 1\\
+& \hspace{2em}   \boldsymbol{\operatorname{while }}\; n > 0:\\
+& \hspace{4em}       \boldsymbol{\operatorname{if }}\; n \bmod 2 == 1:\\
+& \hspace{6em}           r = r \times x\\
+& \hspace{4em}       x = x \times x\\
+& \hspace{4em}       n = \lfloor n / 2 \rfloor\\
+& \hspace{2em}   \boldsymbol{\operatorname{return }}\; r
+\end{aligned}
+$$
+
+
+Time Complexity: $O(\lg n)$

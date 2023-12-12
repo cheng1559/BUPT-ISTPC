@@ -1,0 +1,70 @@
+\begin{problem}{Card Game in Mondstant}{standard input}{standard output}{1 second}{256 megabytes}
+
+The Genius Invocation TCG is a card game that has taken Teyvat by storm. In this game, each character card boasts three unique skills. At the outset of every turn, players acquire a set number of dice through rolls. Each die can represent one of seven elements or be a colorless die, and players can expend these dice to unleash a variety of skills.
+
+The Cat's Tail in Mondstadt frequently hosts showdowns in the heated battle mode of the Genius Invocation TCG. This mode often features a plethora of unconventional rules, such as reducing the number of dice needed for skills or making all dice colorless.
+
+Now, let's delve into a simplified version of the heated battle mode where all dice are colorless. Normal attacks and elemental skills require only $1$ die, while elemental bursts demand $2$ dice, and no charging is necessary. In this scenario, only one character occupies the battlefield.
+
+To optimize resource utilization, the goal is to determine the number of ways to exhaust all the dice.
+
+To be specific, starting with $k$ dice, you can execute the following three operations until you have $0$ dice remaining:
+
+\begin{itemize}
+\item Normal attack, consuming $1$ die.
+\item Elemental skill, consuming $1$ die.
+\item Elemental burst, consuming $2$ dice.
+\end{itemize}
+
+Two sequences of operations are considered distinct if and only if their total numbers of operations differ or if there exists an $i$ such that the $i$-th operation in the two sequences differs.
+
+As the result could be extremely large, you only need to output the result modulo $998244353$.
+
+
+\begin{center}
+  \includegraphics[scale=0.15]{cattail.jpg} \\
+  \small{The Cat's Tail}
+\end{center}
+
+
+\InputFile
+An integer $k$ represents the initial number of dice. ($1 \le k \le 10^{15}$).
+
+\OutputFile
+An integer representing the number of ways to use all the dice, modulo $998244353$.
+
+\Examples
+
+\begin{example}
+\exmpfile{example.01}{example.01.a}%
+\exmpfile{example.02}{example.02.a}%
+\exmpfile{example.03}{example.03.a}%
+\end{example}
+
+\Note
+Some participants may not know how to calculate $x^n$ ($n$ being a natural number). Here is an algorithm:
+
+Note that:
+$$
+x^0 = 1\\
+x^n = x^{n \bmod 2} \cdot (x^2)^{\lfloor n / 2 \rfloor}
+$$
+In programming, the recursion can actually be unfolded into a loop with the following algorithm:
+$$
+\begin{aligned}
+& POWER(x, n):\\
+& \hspace{2em}   r = 1\\
+& \hspace{2em}   \boldsymbol{\operatorname{while }}\; n > 0:\\
+& \hspace{4em}       \boldsymbol{\operatorname{if }}\; n \bmod 2 == 1:\\
+& \hspace{6em}           r = r \times x\\
+& \hspace{4em}       x = x \times x\\
+& \hspace{4em}       n = \lfloor n / 2 \rfloor\\
+& \hspace{2em}   \boldsymbol{\operatorname{return }}\; r
+\end{aligned}
+$$
+
+
+Time Complexity: $O(\lg n)$
+
+\end{problem}
+

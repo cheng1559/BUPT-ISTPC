@@ -1,0 +1,26 @@
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META content="no-cache" http-equiv="pragma">
+    <META content="-1" http-equiv="expires">
+    <META content="text/html;charset=UTF-8" http-equiv="content-type">
+    <LINK href="problem-statement.css" rel="stylesheet" type="text/css">
+    <TITLE>蒙德的卡牌</TITLE>
+    <SCRIPT type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$$$','$$$']], displayMath: [['$$$$$$','$$$$$$']]}
+        });
+        </SCRIPT>
+        <SCRIPT async="" src="https://polygon.codeforces.com/lib/MathJax/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+    </SCRIPT>
+</HEAD><BODY>
+    <DIV class="problem-statement"><DIV class="header"><DIV class="title">蒙德的卡牌</DIV><DIV class="time-limit"><DIV class="property-title">time limit per test</DIV>1 second</DIV><DIV class="memory-limit"><DIV class="property-title">memory limit per test</DIV>256 megabytes</DIV><DIV class="input-file"><DIV class="property-title">input</DIV>standard input</DIV><DIV class="output-file"><DIV class="property-title">output</DIV>standard output</DIV></DIV><DIV class="legend"><P>七圣召唤是风靡提瓦特的卡牌游戏，这个游戏中每个角色牌有三种技能，在每回合的开始，玩家通过投掷获取一定数量的骰子，每个骰子可能是七种元素之一，也可能是无色骰子，玩家可以消耗骰子来发动一些技能。</P><P>蒙德的猫尾酒馆经常举行热斗模式的七圣召唤对决，这种模式下一般会有许多离谱的规则，比如减少技能所需骰子，所有骰子均为无色等等。</P><P>现在我们考虑一种简单的热斗模式对决，所有骰子均为无色，元素战技和普通攻击仅需$$$1$$$骰子，元素爆发仅需$$$2$$$骰子，且不再需要充能，场上只有一位角色。</P><P>为了避免浪费，我们总是希望用完所有骰子，你需要求出用完所有骰子的方案数。</P><P>具体地说，你一开始有$$$k$$$个骰子，每次你可以进行以下三个操作，直到剩余$$$0$$$个骰子为止： </P><UL> <LI> 普通攻击，消耗$$$1$$$骰子。 </LI><LI> 元素战技，消耗$$$1$$$骰子。 </LI><LI> 元素爆发，消耗$$$2$$$骰子。 </LI></UL><P></P><P>两种操作方案被认为是不同的当且仅当它们总的操作次数不同，或者存在一个$$$i$$$使得两种操作的第$$$i$$$步操作不同。</P><P>由于这个数可能特别大，你只需要输出对$$$998244353$$$取模的结果。</P><P></P><CENTER> <IMG class="tex-graphics" src="3896243039a8e11d06fc440f256411178ac718f4.png">   <SPAN class="tex-font-size-small">猫尾酒馆</SPAN> </CENTER></DIV><P></P><P></P><DIV class="input-specification"><DIV class="section-title">Input</DIV><P></P><P>一个整数$$$k$$$，一开始的骰子数量。（$$$1 \le k \le 10^{15}$$$）</P></DIV><P></P><P></P><DIV class="output-specification"><DIV class="section-title">Output</DIV><P></P><P>一个整数，用完所有骰子的方案数，对$$$998244353$$$取模。</P></DIV><P></P><P></P><DIV class="sample-tests"><DIV class="section-title">Examples</DIV><P></P><P></P><DIV class="sample-test"><DIV class="input"><DIV class="title">Input</DIV><PRE class="content">
+<DIV class="test-example-line test-example-line-even test-example-line-0">1</DIV></PRE></DIV><DIV class="output"><DIV class="title">Output</DIV><PRE class="content">
+2
+</PRE></DIV><DIV class="input"><DIV class="title">Input</DIV><PRE class="content">
+<DIV class="test-example-line test-example-line-even test-example-line-0">3</DIV></PRE></DIV><DIV class="output"><DIV class="title">Output</DIV><PRE class="content">
+12
+</PRE></DIV><DIV class="input"><DIV class="title">Input</DIV><PRE class="content">
+<DIV class="test-example-line test-example-line-even test-example-line-0">87842506579379</DIV></PRE></DIV><DIV class="output"><DIV class="title">Output</DIV><PRE class="content">
+893188283
+</PRE></DIV></DIV></DIV><P></P><P></P><DIV class="note"><DIV class="section-title">Note</DIV><P></P><P>一些选手可能不知道如何计算$$$x^n$$$（$$$n$$$是自然数），这里给出一种算法：</P><P>注意到: $$$$$$ x^0 = 1\\ x^n = x^{n \bmod 2} \cdot (x^2)^{\lfloor n / 2 \rfloor} $$$$$$ 在编程中实际上将递归展开成循环，有算法：</P><P>$$$$$$ \begin{aligned} &amp; POWER(x, n):\\ &amp; \hspace{2em} r = 1\\ &amp; \hspace{2em} \boldsymbol{\operatorname{while }}\; n &gt; 0:\\ &amp; \hspace{4em} \boldsymbol{\operatorname{if }}\; n \bmod 2 == 1:\\ &amp; \hspace{6em} r = r \times x\\ &amp; \hspace{4em} x = x \times x\\ &amp; \hspace{4em} n = \lfloor n / 2 \rfloor\\ &amp; \hspace{2em} \boldsymbol{\operatorname{return }}\; r \end{aligned} $$$$$$</P><P>时间复杂度: $$$O(\lg n)$$$</P></DIV></DIV><P></P><P>  </P>
+
+</BODY></HTML>

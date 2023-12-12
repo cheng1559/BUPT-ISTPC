@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="7" short-name="r10-shortest-path" url="https://polygon.codeforces.com/p1w42bJ/CaveNightingale/r10-shortest-path">
+    <names>
+        <name language="chinese" value="须弥的山头"/>
+        <name language="english" value="Mountains in Sumeru"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="chinese" mathjax="true" path="statements/chinese/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="chinese" mathjax="true" path="statements/.html/chinese/problem.html" type="text/html"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="chinese" path="statements/.pdf/chinese/problem.pdf" type="application/pdf"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="" run-count="1">
+        <testset name="tests">
+            <time-limit>4500</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>25</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" points="4.0" sample="true"/>
+                <test method="manual" points="4.0" sample="true"/>
+                <test method="manual" points="4.0" sample="true"/>
+                <test description="Defend against SPFA" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Tree" method="manual" points="4.0"/>
+                <test description="Weights are all 0" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Small" method="manual" points="4.0"/>
+                <test description="Red only" method="manual" points="4.0"/>
+                <test description="Blue only" method="manual" points="4.0"/>
+                <test description="Medium" method="manual" points="4.0"/>
+                <test description="Medium" method="manual" points="4.0"/>
+                <test description="Medium" method="manual" points="4.0"/>
+                <test description="Medium" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Random" method="manual" points="4.0"/>
+                <test description="Tiny" method="manual" points="4.0"/>
+                <test description="Tiny" method="manual" points="4.0"/>
+                <test description="Large Weight" method="manual" points="4.0"/>
+                <test description="Tiny" method="manual" points="4.0"/>
+                <test method="manual" points="4.0"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/validator.cc" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::ncmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cc" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>4</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/2d-dijkstra.py" type="python.3"/>
+                <binary path="solutions/2d-dijkstra.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/dijkstra-twice.py" type="python.3"/>
+                <binary path="solutions/dijkstra-twice.pys3" type="pythonx.3"/>
+                <extra-tags>
+                    <extra-tag tag="accepted" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/ignore-blue.py" type="python.3"/>
+                <binary path="solutions/ignore-blue.pys3" type="pythonx.3"/>
+                <extra-tags>
+                    <extra-tag tag="wrong-answer" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/ignore-color.py" type="python.3"/>
+                <binary path="solutions/ignore-color.pys3" type="pythonx.3"/>
+                <extra-tags>
+                    <extra-tag tag="wrong-answer" testset="tests"/>
+                </extra-tags>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/spfa.cc" type="cpp.g++17"/>
+                <binary path="solutions/spfa.exe" type="exe.win32"/>
+                <extra-tags>
+                    <extra-tag tag="time-limit-exceeded" testset="tests"/>
+                </extra-tags>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="geometry"/>
+        <tag value="shortest paths"/>
+    </tags>
+</problem>
